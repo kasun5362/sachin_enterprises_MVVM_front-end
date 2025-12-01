@@ -14,7 +14,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(),
-        body: Column(children: [Image.asset(ImageConstants.logo)]),
+        body: Column(
+          children: [
+            Image.asset(ImageConstants.logo),
+            Text(
+              "Welcome to Sachin Enterprises",
+              style: TextStyle(color: ColorConstants.primaryColor),
+            ),
+          ],
+        ),
       ),
     );
   }
