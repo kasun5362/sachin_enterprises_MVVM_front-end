@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.7
+  go_router: ^17.0.0
 
 dev_dependencies:
   flutter_test:
@@ -130,7 +131,7 @@ flutter_native_splash:
   # remain optional. NOTE that if you specify the [required] color, then you cant 
   # use the [required] background_image in the next section. the reverse is true.
   # select one, they cant work together.
-  color: "#42a5f5"  ##====================================[REQUIRED]==========
+  color: "#FFFFFF"  ##====================================[REQUIRED]==========
   #color_dark: "#042a49"
   # platform-specific color. will override general color if active:
   #color_android: "#42a5f5"
@@ -226,7 +227,7 @@ flutter_native_splash:
   #! ANDROID 12+ configuration:
   android_12:
     # background color
-    color: "#42a5f5"
+    color: "#FFFFFF"
     # color_dark: "#042a49"
 
     # center-logo
@@ -239,7 +240,7 @@ flutter_native_splash:
     # image_dark: assets/images/logo/logo-splash2.png  
 
     # center-logo background color
-    icon_background_color: "#111111"
+    icon_background_color: "#FFFFFF"
     # icon_background_color_dark: "#eeeeee"
 
     # branding:
