@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sachin_enterprises/features/category/view_model/category_view_model.dart';
+import 'package:sachin_enterprises/features/product/view_model/product_view_model.dart';
+import 'package:sachin_enterprises/routes/routes.dart';
 import 'package:sachin_enterprises/utils/color_constants.dart';
 import 'package:sachin_enterprises/utils/image_constants.dart';
 
@@ -11,19 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Column(
-          children: [
-            Image.asset(ImageConstants.logo),
-            Text(
-              "Welcome to Sachin Enterprises",
-              style: TextStyle(color: ColorConstants.primaryColor),
-            ),
-          ],
-        ),
-      ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProductViewModel()),
+        ChangeNotifierProvider(create: (context) => CategoryViewModel()),
+      ],
+      child: MaterialApp.router(routerConfig: AppRoutes.router),
     );
   }
 }
