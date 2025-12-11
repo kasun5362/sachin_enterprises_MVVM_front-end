@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sachin_enterprises/features/category/view_model/category_view_model.dart';
 import 'package:sachin_enterprises/features/product/view_model/product_view_model.dart';
 import 'package:sachin_enterprises/utils/image_constants.dart';
+import 'package:sachin_enterprises/utils/text_constants.dart';
 import 'package:sachin_enterprises/widgets/category_chip_widget.dart';
 import 'package:sachin_enterprises/widgets/product_card_widget.dart';
 import 'package:sachin_enterprises/widgets/search_bar_widget.dart';
@@ -45,64 +47,78 @@ class _ProductScreenState extends State<ProductScreen> {
     final products = productViewModel.serachProducts;
     final categories = categoryViewModel.categories;
 
-    return products.isEmpty
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.inventory_2_outlined, size: 80, color: Colors.grey),
-                SizedBox(height: 16),
-                Text(
-                  "No products found",
-                  style: TextStyle(fontSize: 16, color: Colors.black54),
-                ),
-              ],
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(ImageConstants.topBackground),
+              fit: BoxFit.cover,
             ),
-          )
-        : Column(
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
+          child: Column(
             children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  width: double.infinity,
-
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(ImageConstants.topBackground),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: const BorderRadius.vertical(
-                      bottom: Radius.circular(30),
-                    ),
-                  ),
-                  child: Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     children: [
-                      SizedBox(height: 50),
-                      SearchBarWidget(
-                        onChanged: (String value) {
-                          productViewModel.searchProducts(value);
-                        },
+                      Text(
+                        'Hi, ',
+                        style: AppTextStyles.heading2.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
-                      CategoryChipWidget(categoris: categories),
+
+                      Text(
+                        "User !",
+                        style: AppTextStyles.heading3.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
                     ],
                   ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: GridView.builder(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+
+                  IconButton(
+                    icon: const Icon(Icons.shopping_cart),
+                    color: Colors.white,
+                    iconSize: 30,
+                    onPressed: () {},
                   ),
-                  itemCount: products.length,
-                  itemBuilder: (context, index) {
-                    final product = products[index];
-                    return ProductCard(product: product);
-                  },
-                ),
+                ],
               ),
+              SearchBarWidget(
+                onChanged: (String value) {
+                  productViewModel.searchProducts(value);
+                },
+              ),
+              SizedBox(height: 10),
+              CategoryChipWidget(categoris: categories),
             ],
-          );
+          ),
+        ),
+
+        Expanded(
+          flex: 2,
+          child: GridView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              final product = products[index];
+              return ProductCard(product: product);
+            },
+          ),
+        ),
+      ],
+    );
   }
 }

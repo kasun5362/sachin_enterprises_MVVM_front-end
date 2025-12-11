@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sachin_enterprises/routes/route_constants.dart';
 import 'package:sachin_enterprises/service/navigation_service.dart';
 import 'package:sachin_enterprises/utils/color_constants.dart';
+import 'package:sachin_enterprises/utils/text_constants.dart';
 import 'package:sachin_enterprises/widgets/button_widget.dart';
 import 'package:sachin_enterprises/widgets/choose_image_button_widget.dart';
 import 'package:sachin_enterprises/widgets/input_text_feild_widget.dart';
@@ -37,13 +38,41 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(
+              reverse: true,
               child: Column(
                 children: [
-                  LogoWidget(width: 200, height: 200),
-                  SizedBox(height: 10),
-                  TitleText(title: "Create Account"),
-                  SizedBox(height: 10),
-                  SubtitleText(subtitle: "Sign up to get started!"),
+                  LogoWidget(width: 150, height: 150),
+
+                  Text("Create Account", style: AppTextStyles.heading1),
+
+                  Text(
+                    "Sign up to get started!",
+                    style: AppTextStyles.subtitle2,
+                  ),
+                  SizedBox(height: 20),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: InputTextFeildWidget(
+                          hintText: "First Name",
+                          prefixIcon: Icon(Icons.person),
+                          controller: firstnameController,
+                          keyboardType: TextInputType.name,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: InputTextFeildWidget(
+                          hintText: "Last Name",
+                          prefixIcon: Icon(Icons.person),
+                          controller: lastnameController,
+                          keyboardType: TextInputType.name,
+                        ),
+                      ),
+                    ],
+                  ),
+
                   SizedBox(height: 10),
 
                   InputTextFeildWidget(
@@ -63,21 +92,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     obscureText: true,
                   ),
 
-                  SizedBox(height: 10),
-
-                  InputTextFeildWidget(
-                    hintText: "First Name",
-                    prefixIcon: Icon(Icons.person),
-                    controller: firstnameController,
-                    keyboardType: TextInputType.name,
-                  ),
-                  SizedBox(height: 10),
-                  InputTextFeildWidget(
-                    hintText: "Last Name",
-                    prefixIcon: Icon(Icons.person),
-                    controller: lastnameController,
-                    keyboardType: TextInputType.name,
-                  ),
                   SizedBox(height: 10),
                   InputTextFeildWidget(
                     hintText: "NIC",
@@ -99,23 +113,29 @@ class _SignupScreenState extends State<SignupScreen> {
                     controller: contactController,
                     keyboardType: TextInputType.phone,
                   ),
-
-                  SizedBox(height: 20),
-
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      ChooseImageButtonWidget(
-                        buttonText: "Choose Profile Image",
+                      Expanded(
+                        child: ChooseImageButtonWidget(
+                          buttonText: "Choose Profile Image",
+                          onTap: () {},
+                        ),
                       ),
                     ],
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8, top: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [Text("Upload face clear image")],
+                      children: [
+                        Text(
+                          "Please upload clear image of your face for verification.",
+                          style: AppTextStyles.bodySmall,
+                        ),
+                      ],
                     ),
                   ),
 
@@ -132,12 +152,18 @@ class _SignupScreenState extends State<SignupScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Do you have an account? "),
+                      Text(
+                        "Do you have an account? ",
+                        style: AppTextStyles.bodySmall,
+                      ),
                       GestureDetector(
                         onTap: () {
                           NavigationService().navigateTo(RouteConstants.login);
                         },
-                        child: PrimaryColorText(text: "Login"),
+                        child: Text(
+                          "Login",
+                          style: AppTextStyles.bodySmallHighlight,
+                        ),
                       ),
                     ],
                   ),

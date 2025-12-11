@@ -18,13 +18,11 @@ class _CategoryChipWidgetState extends State<CategoryChipWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       height: 40,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: widget.categoris.length,
         itemBuilder: (context, index) {
-          bool isSelected = selectedIndex == index;
           return Container(
             width: 100, // Fixed width for all chips
             margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -36,7 +34,7 @@ class _CategoryChipWidgetState extends State<CategoryChipWidget> {
               labelPadding: const EdgeInsets.symmetric(
                 horizontal: 4,
               ), // Control label padding
-              selected: isSelected,
+              selected: selectedIndex == index,
               label: Container(
                 width: 90, // Slightly less than container width
                 height: 32, // Fixed height for vertical centering
@@ -48,7 +46,7 @@ class _CategoryChipWidgetState extends State<CategoryChipWidget> {
                   maxLines: 1,
                   textAlign: TextAlign.center, // Center text within container
                   style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
+                    color: selectedIndex == index ? Colors.white : Colors.black,
                   ),
                 ),
               ),

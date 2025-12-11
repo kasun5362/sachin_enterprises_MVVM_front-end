@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:sachin_enterprises/routes/route_constants.dart';
 import 'package:sachin_enterprises/service/navigation_service.dart';
 import 'package:sachin_enterprises/utils/color_constants.dart';
+import 'package:sachin_enterprises/utils/text_constants.dart';
 import 'package:sachin_enterprises/widgets/button_widget.dart';
 import 'package:sachin_enterprises/widgets/input_text_feild.dart';
 import 'package:sachin_enterprises/widgets/input_text_feild_widget.dart';
@@ -38,10 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 100),
                   LogoWidget(width: 200, height: 200),
                   SizedBox(height: 10),
-                  TitleText(title: "Welcome Back!"),
+                  Text("Welcome Back!", style: AppTextStyles.heading1),
                   SizedBox(height: 10),
-                  SubtitleText(subtitle: "Login to your account using email"),
-                  SizedBox(height: 50),
+                  Text(
+                    "Login to your account to continue",
+                    style: AppTextStyles.subtitle2,
+                  ),
+                  SizedBox(height: 20),
                   InputTextFeildWidget(
                     hintText: "Email",
                     controller: emailController,
@@ -68,13 +72,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [PrimaryColorText(text: "Forgot Password?")],
+                    children: [
+                      Text(
+                        "Forgot Password?",
+                        style: AppTextStyles.bodySmallHighlight,
+                      ),
+                    ],
                   ),
 
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   ButtonWidget(
                     title: 'Get Started',
                     bgColor: ColorConstants.primaryColor,
@@ -87,12 +96,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account? "),
+                      Text(
+                        "Don't have an account? ",
+                        style: AppTextStyles.bodySmall,
+                      ),
                       GestureDetector(
                         onTap: () {
                           NavigationService().navigateTo(RouteConstants.signup);
                         },
-                        child: PrimaryColorText(text: "Sign Up"),
+                        child: Text(
+                          "Sign Up",
+                          style: AppTextStyles.bodySmallHighlight,
+                        ),
                       ),
                     ],
                   ),

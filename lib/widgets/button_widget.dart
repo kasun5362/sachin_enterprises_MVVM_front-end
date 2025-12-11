@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sachin_enterprises/utils/text_constants.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String? title;
@@ -24,7 +25,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? 50,
+
       child: ElevatedButton(
         onPressed: onPressed ?? () {},
         style: ElevatedButton.styleFrom(
@@ -40,7 +41,7 @@ class ButtonWidget extends StatelessWidget {
             vertical: 15,
           ), // Optional: button size
         ),
-        child: Text(title ?? 'Click Me', style: TextStyle(fontSize: 16)),
+        child: Text(title ?? 'Click Me', style: AppTextStyles.button),
       ),
     );
   }

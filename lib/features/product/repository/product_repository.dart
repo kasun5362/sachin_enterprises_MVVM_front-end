@@ -1,3 +1,3 @@
 abstract class ProductRepository {
-  Future<String> fetchProducts();
+  Future<dynamic> fetchAllProducts();
 }
